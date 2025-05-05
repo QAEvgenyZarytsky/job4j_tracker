@@ -1,7 +1,7 @@
 package ru.job4j.oop;
 
 public class Jukebox {
-    String p1 = """
+    public static final String SONG_ONE = """
                "Пусть бегут неуклюже"
             Пусть бегут неуклюже
             Пешеходы по лужам,
@@ -27,7 +27,7 @@ public class Jukebox {
             К сожаленью, день рожденья
             Только раз в году.""";
 
-    String p2 = """
+    public static final String SONG_TWO = """
              "Спокойной ночи малыши".
             Спят усталые игрушки, книжки спят.
             Одеяла и подушки ждут ребят.
@@ -60,8 +60,8 @@ public class Jukebox {
 
     public void music(int position) {
         switch (position) {
-            case 1 -> System.out.println(p1);
-            case 2 -> System.out.println(p2);
+            case 1 -> System.out.println(SONG_ONE);
+            case 2 -> System.out.println(SONG_TWO);
             default -> System.out.println("Песня не найдена");
         }
     }
