@@ -4,11 +4,11 @@ public class Cat {
     private String food;
     private String name;
 
-    void giveNick(String nick) {
+    public void giveNick(String nick) {
         this.name = nick;
     }
 
-    void show() {
+    public void show() {
         System.out.printf("Name of cat: %s. The cat eats: %s. \n", this.name, this.food);
     }
 
