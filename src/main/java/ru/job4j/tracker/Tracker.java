@@ -1,5 +1,8 @@
 package ru.job4j.tracker;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Tracker {
     private final Item[] items = new Item[100];
     private int ids = 1;
@@ -21,5 +24,56 @@ public class Tracker {
             }
         }
         return result;
+    }
+
+    public Item[] findAll() {
+        Item[] rsl = new Item[items.length];
+        int size = 0;
+        for (int i = 0; i < items.length; i++) {
+            if (items[i] != null) {
+                rsl[size] = items[i];
+                size++;
+            }
+        }
+        return Arrays.copyOf(rsl, size);
+    }
+
+    public Item[] findByName(String key) {
+        Item[] rsl = new Item[items.length];
+        int size = 0;
+        for (Item item : items) {
+            if (item != null && item.getName().equals(key)) {
+                rsl[size] = item;
+                size++;
+            }
+        }
+        return Arrays.copyOf(rsl, size);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Tracker tracker = (Tracker) o;
+        return ids == tracker.ids && size == tracker.size && Objects.deepEquals(items, tracker.items);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Arrays.hashCode(items), ids, size);
+    }
+
+    public static void main(String[] args) {
+        Tracker tracker = new Tracker();
+        Item first = new Item("First");
+        Item second = new Item("Second");
+        tracker.add(first);
+        tracker.add(second);
+        tracker.add(new Item("First"));
+        tracker.add(new Item("Second"));
+        tracker.add(new Item("First"));
+        Item[] result = tracker.findByName(first.getName());
+        int i = 0;
     }
 }
