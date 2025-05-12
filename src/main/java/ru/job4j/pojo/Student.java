@@ -7,6 +7,7 @@ public class Student {
     private String surname;
     private String middleName;
     private int group;
+    private Date startStudy;
 
     public Date getStartStudy() {
         return startStudy;
@@ -47,6 +48,4 @@ public class Student {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
-    private Date startStudy;
 }
