@@ -63,17 +63,4 @@ public class Tracker {
     public int hashCode() {
         return Objects.hash(Arrays.hashCode(items), ids, size);
     }
-
-    public static void main(String[] args) {
-        Tracker tracker = new Tracker();
-        Item first = new Item("First");
-        Item second = new Item("Second");
-        tracker.add(first);
-        tracker.add(second);
-        tracker.add(new Item("First"));
-        tracker.add(new Item("Second"));
-        tracker.add(new Item("First"));
-        Item[] result = tracker.findByName(first.getName());
-        int i = 0;
-    }
 }
