@@ -10,5 +10,7 @@ public class StarUI {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
         String currentDateTimeFormat = currentLocalDataTime.format(formatter);
         System.out.println("Текущие дата и время после форматирования: " + currentDateTimeFormat);
+        Item item1 = new Item();
+        System.out.println(item1);
     }
 }
