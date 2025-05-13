@@ -9,7 +9,7 @@ public class Tracker {
 
     public void delete(int id) {
         int start = indexOf(id);
-        if (start != -1 && id < items.length) {
+        if (start != -1) {
             System.arraycopy(items, start + 1, items, start, size - start - 1);
             items[size - 1] = null;
             size--;
