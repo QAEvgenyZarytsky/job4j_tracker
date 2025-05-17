@@ -15,14 +15,14 @@ public class Matches {
             if (matches <= 3 && matches >= 1) {
                 if (count >= matches) {
                     count -= matches;
+                    turn = !turn;
                 } else {
                     System.out.println("Всего осталось спичек: " + count);
-                    continue;
                 }
             } else {
-                continue;
+                System.out.println("Некорректное число!");
             }
-            turn = !turn;
+
         }
         if (!turn) {
             System.out.println("Выиграл первый игрок");
