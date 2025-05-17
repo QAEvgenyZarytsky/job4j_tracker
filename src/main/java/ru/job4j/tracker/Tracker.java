@@ -40,7 +40,6 @@ public class Tracker {
             System.out.println("This ID is invalid. ID cann't be negative.");
         } else if (item == null) {
             System.out.println("Item cann't be null");
-
         } else {
             int index = indexOf(id);
             if (index == -1) {
