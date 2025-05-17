@@ -8,19 +8,12 @@ public class Tracker {
     private int size = 0;
 
     public void delete(int id) {
-        if (id < 0) {
-            System.out.println("This ID is invalid. ID cann't be negative.");
-        } else if (size == 0) {
-            System.out.println("This array is empty.");
-        } else {
-            int start = indexOf(id);
-            if (start != -1) {
-                System.arraycopy(items, start + 1, items, start, size - start - 1);
-                items[size - 1] = null;
-                size--;
-            } else {
-                System.out.println("Item not found.");
-            }
+        int start = indexOf(id);
+        boolean check = start != -1;
+        if (check) {
+            System.arraycopy(items, start + 1, items, start, size - start - 1);
+            items[size - 1] = null;
+            size--;
         }
     }
 
@@ -36,19 +29,13 @@ public class Tracker {
     }
 
     public boolean replace(int id, Item item) {
-        if (id < 0) {
-            System.out.println("This ID is invalid. ID cann't be negative.");
-        } else if (item == null) {
-            System.out.println("Item cann't be null");
-        } else {
-            int index = indexOf(id);
-            if (index == -1) {
-                return false;
-            }
+        int index = indexOf(id);
+        boolean result = index != -1;
+        if (result) {
             item.setId(id);
             items[index] = item;
         }
-        return true;
+        return result;
     }
 
     public Item[] findAll() {
