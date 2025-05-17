@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StartUITest {
@@ -14,5 +17,38 @@ class StartUITest {
         Item created = tracker.findAll()[0];
         Item expected = new Item("Fix PC");
         assertThat(created.getName()).isEqualTo(expected.getName());
+    }
+
+    @Test
+    void whenReplaceItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("new item");
+        tracker.add(item);
+        String[] answers = {
+                String.valueOf(item.getId()), // id сохраненной заявки в объект tracker.
+                "edited item"
+        };
+        StartUI.replaceItem(new MockInput(answers), tracker);
+        Item edited = tracker.findById(item.getId());
+        assertThat(edited.getName()).isEqualTo("edited item");
+    }
+
+    @Test
+    void whenItemForDeleteNotAdded() {
+        String[] answers = {"1"};
+        Input input = new MockInput(answers);
+        Tracker tracker = new Tracker();
+        StartUI.deleteItem(input, tracker);
+        assertThat(tracker.findById(1)).isEqualTo(null);
+    }
+
+    @Test
+    void whenDeleteItem() {
+        String[] answers = {"0", "1"};
+        Input input = new MockInput(answers);
+        Tracker tracker = new Tracker();
+        StartUI.createItem(input, tracker);
+        StartUI.deleteItem(input, tracker);
+        assertThat(tracker.findById(1)).isEqualTo(null);
     }
 }
