@@ -1,4 +1,4 @@
-package ru.job4j.tracker.input_0;
+package ru.job4j.tracker.input;
 
 import java.util.Scanner;
 
