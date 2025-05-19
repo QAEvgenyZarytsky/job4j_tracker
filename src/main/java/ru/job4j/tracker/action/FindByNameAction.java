@@ -6,6 +6,7 @@ import ru.job4j.tracker.Item;
 import ru.job4j.tracker.output.Output;
 
 public class FindByNameAction implements UserAction {
+
     private final Output output;
 
     public FindByNameAction(Output output) {
