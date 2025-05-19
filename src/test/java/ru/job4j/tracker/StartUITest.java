@@ -1,6 +1,12 @@
 package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
+import ru.job4j.tracker.action.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.MockInput;
+import ru.job4j.tracker.output.ConsoleOutput;
+import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.output.StubOutput;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,6 +57,19 @@ class StartUITest {
         };
         new StartUI(output).init(input, tracker, actions);
         assertThat(tracker.findById(item.getId())).isNull();
+    }
+
+    @Test
+    void whenItemForDeleteNotAdded() {
+        Output output = new ConsoleOutput();
+        Tracker tracker = new Tracker();
+        Input input = new MockInput(new String[]{"0", "1", "1"});
+        UserAction[] actions = {
+                new DeleteAction(output),
+                new ExitAction(output)
+        };
+        new StartUI(output).init(input, tracker, actions);
+        assertThat(tracker.findById(1)).isNull();
     }
 
     @Test
