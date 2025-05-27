@@ -4,17 +4,19 @@ import java.util.HashSet;
 
 public class UsageHashSet {
     public static void main(String[] args) {
-        HashSet<Car> autos = new HashSet<>();
-        autos.add(new Lada(2107));
-        autos.add(new BMW("X5"));
-        autos.add(new Volvo("S60"));
-        autos.add(new Toyota("Camry"));
+        String lada = "Lada";
+        String bmw = "BMW";
+        String volvo = "Volvo";
+        String toyota = "Toyota";
 
-        for (Car car : autos) {
-            System.out.println(car.getClass().getSimpleName());
-            System.out.println(car.toString());
-            car.carRun();
-            System.out.println();
+        HashSet<String> autos = new HashSet<>();
+        autos.add(lada);
+        autos.add(bmw);
+        autos.add(volvo);
+        autos.add(toyota);
+
+        for (String car : autos) {
+            System.out.println(car);
         }
     }
 }
