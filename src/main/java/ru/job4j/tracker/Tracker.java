@@ -6,20 +6,17 @@ import java.util.List;
 public class Tracker {
     private final List<Item> items = new ArrayList<>();
     private int ids = 1;
-    private int size = 0;
 
     public void delete(int id) {
         int start = indexOf(id);
-        boolean check = start != -1;
         if (start != -1) {
             items.remove(start);
-            size--;
         }
     }
 
     public Item add(Item item) {
         item.setId(ids++);
-        items.add(size++, item);
+        items.add(item);
         return item;
     }
 
@@ -39,18 +36,18 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        List<Item> resultList = new ArrayList<>(size);
-        for (int i = 0; i < size; i++) {
-            resultList.add(items.get(i));
+        List<Item> resultList = new ArrayList<>();
+        for (Item item : items) {
+            resultList.add(item);
         }
         return resultList;
     }
 
     public List<Item> findByName(String key) {
         List<Item> rsl = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
-            if (items.get(i).getName().equals(key)) {
-                rsl.add(items.get(i));
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                rsl.add(item);
             }
         }
         return rsl;
@@ -58,7 +55,7 @@ public class Tracker {
 
     private int indexOf(int id) {
         int result = -1;
-        for (int index = 0; index < size; index++) {
+        for (int index = 0; index < items.size(); index++) {
             if (items.get(index).getId() == id) {
                 result = index;
                 break;
