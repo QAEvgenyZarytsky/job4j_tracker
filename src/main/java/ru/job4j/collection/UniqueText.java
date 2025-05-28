@@ -1,5 +1,6 @@
 package ru.job4j.collection;
 
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class UniqueText {
@@ -11,12 +12,8 @@ public class UniqueText {
         for (String str : origin) {
             check.add(str);
         }
-        HashSet<String> ourText = new HashSet<>();
-        for (String str : text) {
-            ourText.add(str);
-        }
         for (String str : check) {
-            if (!ourText.contains(str)) {
+            if (!Arrays.asList(text).contains(str)) {
                 result =  false;
                 break;
             }
