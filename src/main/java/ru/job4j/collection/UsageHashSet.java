@@ -11,8 +11,10 @@ public class UsageHashSet {
 
         HashSet<String> autos = new HashSet<>();
         autos.add(lada);
+        autos.add(lada);
         autos.add(bmw);
         autos.add(volvo);
+        autos.add(toyota);
         autos.add(toyota);
 
         for (String car : autos) {
