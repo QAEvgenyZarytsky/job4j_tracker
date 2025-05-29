@@ -10,12 +10,17 @@ public class BankService {
     }
 
     public void deleteUser(String passport) {
-        User keyUser = findByPassport(passport);
-        users.remove(keyUser);
+        users.remove(new User(passport, ""));
     }
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
+        if (user != null) {
+            List<Account> accountList = users.get(user);
+            if (!accountList.contains(account)) {
+                accountList.add(account);
+            }
+        }
         if (user != null && !users.get(user).contains(account)) {
             users.get(user).add(account);
         }
@@ -30,7 +35,7 @@ public class BankService {
         return null;
     }
 
-    public Account findByRequisite(String passport, String requisite)   {
+    public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user != null) {
             List<Account> accountList = users.get(user);
@@ -49,17 +54,15 @@ public class BankService {
         boolean result = true;
         Account sourceUserAccount = findByRequisite(sourcePassport, sourceRequisite);
         Account destinationUserAccount = findByRequisite(destinationPassport, destinationRequisite);
-        if (sourceUserAccount == null || destinationUserAccount == null) {
-            return false;
+        if (sourceUserAccount == null
+                || destinationUserAccount == null
+                || (sourceUserAccount.getBalance() - amount) < 0
+                || sourceUserAccount.equals(destinationUserAccount)) {
+            result = false;
+        } else {
+            sourceUserAccount.setBalance(sourceUserAccount.getBalance() - amount);
+            destinationUserAccount.setBalance(destinationUserAccount.getBalance() + amount);
         }
-        if ((sourceUserAccount.getBalance() - amount) < 0) {
-            return false;
-        }
-        if (sourceUserAccount.equals(destinationUserAccount)) {
-            return false;
-        }
-        sourceUserAccount.setBalance(sourceUserAccount.getBalance() - amount);
-        destinationUserAccount.setBalance(destinationUserAccount.getBalance() + amount);
         return result;
     }
 
