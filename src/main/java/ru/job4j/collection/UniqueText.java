@@ -12,8 +12,8 @@ public class UniqueText {
         for (String str : origin) {
             check.add(str);
         }
-        for (String str : check) {
-            if (!Arrays.asList(text).contains(str)) {
+        for (String str : text) {
+            if (!check.contains(str)) {
                 result =  false;
                 break;
             }
