@@ -7,9 +7,8 @@ public class AnalyzeByMap {
         double sumScoreOfSubject = 0;
         int countOfSubject = 0;
         for (Pupil pupil : pupils) {
-            Iterator<Subject> iterator = pupil.subjects().iterator();
-            while (iterator.hasNext()) {
-                sumScoreOfSubject += iterator.next().score();
+            for (Subject subject : pupil.subjects()) {
+                sumScoreOfSubject += subject.score();
                 countOfSubject++;
             }
         }
@@ -21,9 +20,8 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             double sumScoreOfSubject = 0;
             int countOfSubject = 0;
-            Iterator<Subject> subjectIterator = pupil.subjects().iterator();
-            while (subjectIterator.hasNext()) {
-                sumScoreOfSubject += subjectIterator.next().score();
+            for (Subject subject : pupil.subjects()) {
+                sumScoreOfSubject += subject.score();
                 countOfSubject++;
             }
             listScorePupil.add(new Label(pupil.name(), sumScoreOfSubject / countOfSubject));
@@ -34,11 +32,8 @@ public class AnalyzeByMap {
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
         Map<String, Integer> temp = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
-            Iterator<Subject> subjectIterator = pupil.subjects().iterator();
-            while (subjectIterator.hasNext()) {
-                Subject subject = subjectIterator.next();
-                int sumScoreOfSubject = (temp.get(subject.name()) == null)
-                        ? 0 : temp.get(subject.name());
+            for (Subject subject : pupil.subjects()) {
+                int sumScoreOfSubject = temp.getOrDefault(subject.name(), 0);
                 sumScoreOfSubject += subject.score();
                 temp.put(subject.name(), sumScoreOfSubject);
             }
@@ -54,9 +49,8 @@ public class AnalyzeByMap {
         List<Label> listPupils = new ArrayList<>();
         for (Pupil pupil : pupils) {
             int sumScore = 0;
-            Iterator<Subject> subjectIterator = pupil.subjects().iterator();
-            while (subjectIterator.hasNext()) {
-                sumScore += subjectIterator.next().score();
+            for (Subject subject : pupil.subjects()) {
+                sumScore += subject.score();
             }
             listPupils.add(new Label(pupil.name(), sumScore));
         }
@@ -67,11 +61,8 @@ public class AnalyzeByMap {
     public static Label bestSubject(List<Pupil> pupils) {
         Map<String, Integer> temp = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
-            Iterator<Subject> subjectIterator = pupil.subjects().iterator();
-            while (subjectIterator.hasNext()) {
-                Subject subject = subjectIterator.next();
-                int sumScoreOfSubject = (temp.get(subject.name()) == null)
-                        ? 0 : temp.get(subject.name());
+            for (Subject subject : pupil.subjects()) {
+                int sumScoreOfSubject = temp.getOrDefault(subject.name(), 0);
                 sumScoreOfSubject += subject.score();
                 temp.put(subject.name(), sumScoreOfSubject);
             }
