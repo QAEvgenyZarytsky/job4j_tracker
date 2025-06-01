@@ -2,6 +2,9 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс аккаунт представляет собой аккаунты полльзователя с реквизитами и балансом
+ */
 public class Account {
     private String requisite;
     private double balance;
@@ -11,18 +14,34 @@ public class Account {
         this.balance = balance;
     }
 
+    /**
+     *  Метод для получения реквизитов акканта пользователя.
+     * @return
+     */
     public String getRequisite() {
         return requisite;
     }
 
+    /**
+     * Метод для сохранения реквизитов пользователя.
+     * @param requisite
+     */
     public void setRequisite(String requisite) {
         this.requisite = requisite;
     }
 
+    /**
+     * Метод для получения баланса аккаунта
+     * @return
+     */
     public double getBalance() {
         return balance;
     }
 
+    /**
+     * Метод для сохранения баланса пользователя.
+     * @param balance
+     */
     public void setBalance(double balance) {
         this.balance = balance;
     }

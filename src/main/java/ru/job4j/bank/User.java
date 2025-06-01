@@ -1,6 +1,9 @@
 package ru.job4j.bank;
 import java.util.Objects;
 
+/**
+ * Класс User содержит информацию о пользовеле.
+ */
 public class User {
     private String passport;
     private String username;
@@ -14,14 +17,26 @@ public class User {
         return passport;
     }
 
+    /**
+     * Метод для сохранения паспорта пользователя.
+     * @param passport
+     */
     public void setPassport(String passport) {
         this.passport = passport;
     }
 
+    /**
+     * Метод для получения имени пользователя.
+     * @return
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Метод для сохранения имени пользователя.
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
