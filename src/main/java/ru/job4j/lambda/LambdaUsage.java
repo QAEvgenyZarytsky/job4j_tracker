@@ -2,8 +2,6 @@ package ru.job4j.lambda;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
 
 public class LambdaUsage {
 
@@ -12,6 +10,8 @@ public class LambdaUsage {
         Comparator<String> comparator = (left, right) -> {
             System.out.println("Начало блока \"лямды\"");
             System.out.println("Используем Integer.compare для сравнения длинны");
+            System.out.println("Сравниваем строки: " + left + " : " + right);
+            System.out.println("Сортировка строк по длинне - " + left.length() + " : " + right.length());
             System.out.println("В return передаём:  Integer.compare(right.length(), left.length());");
             return Integer.compare(right.length(), left.length());
         };
