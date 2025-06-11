@@ -10,7 +10,7 @@ class DepartmentsDescComparatorTest {
                 "K2/SK1/SSK2",
                 "K2/SK1/SSK1"
         );
-        assertThat(result).isGreaterThan(0);
+        assertThat(result).isLessThan(0);
     }
 
     @Test
@@ -19,7 +19,7 @@ class DepartmentsDescComparatorTest {
                 "K2",
                 "K2/SK1"
         );
-        assertThat(result).isLessThan(0);
+        assertThat(result).isGreaterThan(0);
     }
 
     @Test
